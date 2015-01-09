@@ -17,13 +17,13 @@ buildscript {
 
 apply plugin: 'forge'
 
-version = "5.0"
+version = "5.2"
 group= "com.sijobe.spc" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "spc"
 
 minecraft {
-    version = "1.7.2-10.12.2.1121"
-    assetDir = "eclipse/assets"
+    version = "1.7.10-10.13.2.1230"
+    runDir = "eclipse"
 }
 
 dependencies {

@@ -13,7 +13,7 @@ import cpw.mods.fml.relauncher.IFMLLoadingPlugin.SortingIndex;
  * @author aucguy
  * @version 1.0
  */
-@MCVersion("1.7.2")
+@MCVersion("1.7.10")
 @Name("spc Coremod")
 @TransformerExclusions("com.sijobe.spc.asm")
 @SortingIndex() //ensure notch names

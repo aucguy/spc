@@ -39,7 +39,7 @@ public class BlockReach extends StandardCommand implements IClientConfig<Float>{
    
    /**
     * the block reachDistance for the client
-    * refered to through ASM modifications and is client sided
+    * referred to through ASM modifications and is client sided
     */
    public static float reachDistance = 4.5F;
    

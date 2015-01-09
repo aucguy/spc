@@ -257,19 +257,21 @@ public class Player {
 
    public MovingObjectPosition rayTrace(double distance, float partialTickTime) {
 	   //was this rayTrace supposed to include liquids or not? //probably not liquids
-      Vec3 positionVec = getPositionVec(partialTickTime);
-      Vec3 lookVec = player.getLook(partialTickTime);
-      Vec3 hitVec = positionVec.addVector(lookVec.xCoord * distance, lookVec.yCoord * distance, lookVec.zCoord * distance);
-      return player.worldObj.rayTraceBlocks(positionVec, hitVec, false); // TODO: Validate correct params
+      //Vec3 positionVec = getPositionVec(partialTickTime);
+      //Vec3 lookVec = player.getLook(partialTickTime);
+      //Vec3 hitVec = positionVec.addVector(lookVec.xCoord * distance, lookVec.yCoord * distance, lookVec.zCoord * distance);
+      //return player.worldObj.rayTraceBlocks(positionVec, hitVec, false); // TODO: Validate correct params
+      return getMinecraftPlayer().rayTrace(distance, partialTickTime);
    }
 
    /**
     * interpolated position vector
     */
+   /*
    public Vec3 getPositionVec(float partialTickTime) {
       double offsetY = player.posY + player.getEyeHeight();
       if (partialTickTime == 1.0F) {
-         return getWorld().getMinecraftWorld().getWorldVec3Pool().getVecFromPool(player.posX, offsetY, player.posZ);
+         return new Vec3(player.posX, offsetY, player.posZ);
       } else {
          double var2 = player.prevPosX + (player.posX - player.prevPosX) * partialTickTime;
          double var4 = player.prevPosY + (offsetY - (player.prevPosY + player.getEyeHeight())) * partialTickTime;
@@ -277,6 +279,7 @@ public class Player {
          return getWorld().getMinecraftWorld().getWorldVec3Pool().getVecFromPool(var2, var4, var6);
       }
    }
+   */
 
    /*public String getGameType() { // TODO
    }*/

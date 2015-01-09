@@ -41,7 +41,7 @@ import com.sijobe.spc.proxy.Proxy;
 @Mod(
       useMetadata = true,
       modid = "spc",
-      version = "5.0")
+      version = "5.2")
 public class ModSpc {
    /**
     * the spc mod instance
@@ -102,7 +102,7 @@ public class ModSpc {
       if (this.side == Side.CLIENT) {
          // if reflection wasn't used then when this class was loaded the
          // ClientProxy class would be loaded
-         // and since ClientProxy referrs to net.minecraft.client.Minecraft,
+         // and since ClientProxy refers to net.minecraft.client.Minecraft,
          // that would be loaded
          // loading net.minecraft.client.Minecraft on a server crashes it.
          this.proxy = (Proxy) Class.forName("com.sijobe.spc.proxy.client.ClientProxy").newInstance();

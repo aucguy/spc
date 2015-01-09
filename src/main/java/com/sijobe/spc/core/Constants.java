@@ -17,7 +17,7 @@ public class Constants {
 	/**
     * Contains the version string of the current Minecraft version
     */
-   public static final String VERSION = "1.7.2";
+   public static final String VERSION = "1.7.10";
    
    /**
     * The name of the mod
@@ -27,7 +27,7 @@ public class Constants {
    /**
     * The current version of the mod
     */
-   public static final ModVersion SPC_VERSION = new ModVersion(NAME, VERSION, new Date(1415419100)); // November 7, 2014 9:58 pm
+   public static final ModVersion SPC_VERSION = new ModVersion(NAME, VERSION, new Date(1420775580)); // January 8, 2015 9:52 pm
 
    /**
     * The directory that the mod saves/loads global settings from

@@ -5,6 +5,8 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
 
+import net.minecraft.entity.player.EntityPlayer;
+
 import com.sijobe.spc.ModSpc;
 import com.sijobe.spc.core.Constants;
 import com.sijobe.spc.util.ReflectionHelper;
@@ -69,7 +71,12 @@ public class MinecraftServer {
     */
    public static Player getPlayerByUsername(String username) {
       if (isLoggedIn(username)) {
-         return new Player(getMinecraftServer().getConfigurationManager().getPlayerForUsername(username));
+         for(Object i : getMinecraftServer().getConfigurationManager().playerEntityList) {
+            Player player = new Player((EntityPlayer) i);
+            if(player.getUsername().equals(username)) {
+               return player;
+            }
+         }
       }
       return null;
    }
