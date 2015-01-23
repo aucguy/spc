@@ -3,7 +3,7 @@
   "modid": "spc",
   "name": "Single Player Commands",
   "description": "Adds various commands to minecraft",
-  "version": "5.2",
+  "version": "5.3",
   "mcversion": "1.7.10",
   "url": "",
   "updateUrl": "",

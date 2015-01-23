@@ -117,6 +117,7 @@ public class Macro extends MultipleCommands {
          }
          Settings settings = loadSettings(player);
          settings.set(SETTINGS_PREFIX + (String)params.get(0), ((String) params.get(1)).replace("/", "\n\r"));
+         settings.save();
       } else if(getName().equalsIgnoreCase("removemacro")) {
          String macro = (String) params.get(0);
          Player player = getSenderAsPlayer(sender);
@@ -136,6 +137,7 @@ public class Macro extends MultipleCommands {
          }
          settings.remove(SETTINGS_PREFIX + macro);
          sender.sendMessageToPlayer("Macro " + macro + " removed.");
+         settings.save();
       } else {
          assert false : "Invalid command " + getName();
       }

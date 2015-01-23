@@ -27,7 +27,7 @@ public class Constants {
    /**
     * The current version of the mod
     */
-   public static final ModVersion SPC_VERSION = new ModVersion(NAME, VERSION, new Date(1420775580)); // January 8, 2015 9:52 pm
+   public static final ModVersion SPC_VERSION = new ModVersion(NAME, VERSION, new Date(1421978441)); // January 22, 2015 8:00 pm
 
    /**
     * The directory that the mod saves/loads global settings from
@@ -50,6 +50,11 @@ public class Constants {
     * Directory where the Minecraft level saves are located
     */
    public static final File SAVES_DIR = new File(MinecraftServer.getDirectoryName(), MinecraftServer.getMinecraftServer().isDedicatedServer() ? "" : "saves");
+   
+   /**
+    * the current settings format version. Incremented by one for each version
+    */
+   public static final int CURRENT_FORMAT = 1;
    
    /**
     * @return the version

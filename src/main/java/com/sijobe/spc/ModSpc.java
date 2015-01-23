@@ -10,6 +10,7 @@ import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
+import cpw.mods.fml.common.event.FMLServerAboutToStartEvent;
 import cpw.mods.fml.common.event.FMLServerStartingEvent;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.TickEvent.Phase;
@@ -20,6 +21,7 @@ import cpw.mods.fml.relauncher.Side;
 import com.sijobe.spc.core.HookManager;
 import com.sijobe.spc.core.IBlockBroken;
 import com.sijobe.spc.core.IBreakSpeed;
+import com.sijobe.spc.core.IServerAboutToStart;
 import com.sijobe.spc.wrapper.Block;
 import com.sijobe.spc.wrapper.Item;
 import com.sijobe.spc.wrapper.Player;
@@ -41,7 +43,7 @@ import com.sijobe.spc.proxy.Proxy;
 @Mod(
       useMetadata = true,
       modid = "spc",
-      version = "5.2")
+      version = "5.3")
 public class ModSpc {
    /**
     * the spc mod instance
@@ -118,6 +120,7 @@ public class ModSpc {
       this.hookManager.loadHooks(IBreakSpeed.class);
       this.hookManager.loadHooks(IBlockBroken.class);
       this.hookManager.loadHooks(IClientConfig.class);
+      this.hookManager.loadHooks(IServerAboutToStart.class);
       MinecraftForge.EVENT_BUS.register(this);
       FMLCommonHandler.instance().bus().register(this);
       this.networkHandler = new SimpleNetworkWrapper("spc.network");
@@ -138,7 +141,7 @@ public class ModSpc {
    
    // TODO make void handleHook<T>()
    /**
-    * callss all of the player tick hooks
+    * calls all of the player tick hooks
     * 
     * @param event - the PlayerTick event
     */
@@ -157,7 +160,7 @@ public class ModSpc {
    }
    
    /**
-    * calls of of the break speed hooks. Used to modify the time it takes to
+    * calls all of the break speed hooks. Used to modify the time it takes to
     * break something
     * 
     * @param event - the breakSpeed event
@@ -185,6 +188,20 @@ public class ModSpc {
          if (hook.isEnabled()) {
             hook.onBreakBroken(event.x, event.y, event.z, new World(event.world), Block.fromMinecraftBlock(event.block), event.blockMetadata, new Player(
                   event.getPlayer()));
+         }
+      }
+   }
+   
+   /**
+    * calls all of the server about to start hooks
+    * 
+    * @param event - the server starting event
+    */
+   @EventHandler
+   public void onServerAboutToStart(FMLServerAboutToStartEvent event) {
+      for(IServerAboutToStart hook : this.hookManager.getHooks(IServerAboutToStart.class)) {
+         if(hook.isEnabled()) {
+            hook.onServerAboutToStart();
          }
       }
    }

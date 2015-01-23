@@ -335,14 +335,14 @@ public abstract class CommandBase extends net.minecraft.command.CommandBase {
       String directoryName = MinecraftServer.getWorldFolder();
       SettingsManager manager = MANAGER.get(directoryName);
       if (manager == null) {
-         File spcPlayers = new File(MinecraftServer.getWorldDirectory(), "spc/players");
+         File spcPlayers = new File(MinecraftServer.getWorldDirectory(), "spc/players-uuid");
          if (!spcPlayers.exists()) {
             spcPlayers.mkdirs();
          }
          manager = new SettingsManager(spcPlayers, Constants.DEFAULT_SETTINGS);
          MANAGER.put(directoryName, manager);
       }
-      return manager.load(player.getPlayerName());
+      return manager.load(player.getUuid());
    }
    
    /**

@@ -551,6 +551,7 @@ public class Player {
     * Gets the players username
     * 
     * @return The players username
+    * @TODO remove type checking - its redundant
     */
    public String getUsername() {
       if (player instanceof EntityClientPlayerMP) {
@@ -559,5 +560,14 @@ public class Player {
          ((EntityPlayerMP) player).getCommandSenderName();
       }
       return "";
+   }
+   
+   /**
+    * gets the player uuid
+    * 
+    * @return the player's uuid
+    */
+   public String getUuid() {
+      return player.getGameProfile().getId().toString().replace("-", "");
    }
 }
